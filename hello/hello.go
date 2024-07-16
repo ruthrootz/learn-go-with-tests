@@ -5,7 +5,7 @@ import (
 )
 
 func Hello() string {
-  return "hello, world"
+  return "hello, world!"
 }
 
 func main() {
