@@ -7,6 +7,9 @@ import (
 const englishGreetingPrefix = "Hello, "
 
 func Hello(name string) string {
+  if name == "" {
+    name = "World"
+  }
   return fmt.Sprintf("%s%s!", englishGreetingPrefix, name)
 }
 
