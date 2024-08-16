@@ -35,4 +35,3 @@ func greetingPrefix(language string) (prefix string) {
 func main() {
   fmt.Println(Hello("Ruth", ""))
 }
-
