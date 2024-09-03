@@ -1,8 +1,8 @@
 package iteration
 
-func Repeat(x string) string {
+func Repeat(x string, times int) string {
 	result := ""
-	for range 5 {
+	for range times {
 		result += x
 	}
 	return result
