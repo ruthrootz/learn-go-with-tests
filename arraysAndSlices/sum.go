@@ -8,3 +8,11 @@ func Sum(numbers []int) int {
   return sum
 }
 
+func SumAll(numbersToSum ...[]int) []int {
+  var sumArray []int
+  for _, array := range numbersToSum {
+    sumArray = append(sumArray, Sum(array))
+  }
+  return sumArray
+}
+
