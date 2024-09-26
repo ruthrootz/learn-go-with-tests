@@ -16,3 +16,11 @@ func SumAll(numbersToSum ...[]int) []int {
   return sumArray
 }
 
+func SumAllTails(numbersToSum ...[]int) []int {
+  var sumArray []int
+  for _, array := range numbersToSum {
+    sumArray = append(sumArray, Sum(array) - array[0])
+  }
+  return sumArray
+}
+
