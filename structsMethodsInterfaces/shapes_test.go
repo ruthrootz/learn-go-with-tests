@@ -18,7 +18,7 @@ func TestArea(t *testing.T) {
 
   areaTests := []struct {
     shape Shape
-    want  float64
+    hasArea  float64
   }{
     {Rectangle {12, 6}, 72.0},
     {Circle {10}, 314.1592653589793},
@@ -27,8 +27,8 @@ func TestArea(t *testing.T) {
 
   for _, tt := range areaTests {
     got := tt.shape.Area()
-    if got != tt.want {
-      t.Errorf("got %g want %g", got, tt.want)
+    if got != tt.hasArea {
+      t.Errorf("%#v got %g want %g", tt.shape, got, tt.hasArea)
     }
   }
 
