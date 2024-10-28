@@ -1,5 +1,9 @@
 package pointersAndErrors
 
+import (
+  "testing"
+)
+
 func TestWallet(t *testing.T) {
   wallet := Wallet{}
   wallet.Deposit(10)
