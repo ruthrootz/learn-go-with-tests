@@ -2,10 +2,11 @@ package main
 
 import (
   "learn-go-with-tests/dependencyInjection"
-  "os"
+  "net/http"
+  "log"
 )
 
 func main() {
-  dependencyInjection.Greet(os.Stdout, "Test")
+  log.Fatal(http.ListenAndServe(":5001", http.HandlerFunc(dependencyInjection.GreeterHandler)))
 }
 
