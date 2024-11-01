@@ -17,6 +17,22 @@ type MockSleeper struct {
   Calls int
 }
 
+type MockCountdownOperations struct {
+  Calls []string
+}
+
+func (c *MockCountdownOperations) Sleep() {
+  c.Calls = append(c.Calls, sleep)
+}
+
+func (c *MockCountdownOperations) Write(p []byte) (n int, err error) {
+  c.Calls = append(c.Calls, write)
+  return
+}
+
+const write = "write"
+const sleep = "sleep"
+
 type DefaultSleeper struct {}
 
 func (s *MockSleeper) Sleep() {
@@ -33,5 +49,9 @@ func Countdown(out io.Writer, sleeper Sleeper) {
     sleeper.Sleep()
   }
   fmt.Fprintf(out, finalWord)
+}
+
+func Write(out io.Writer, toPrint string) {
+  fmt.Fprintln(out, toPrint)
 }
 
