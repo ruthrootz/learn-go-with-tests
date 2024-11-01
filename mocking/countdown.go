@@ -9,6 +9,9 @@ import (
 var countdownStart = 3
 var finalWord = "Go!"
 
+const write = "write"
+const sleep = "sleep"
+
 type Sleeper interface {
   Sleep()
 }
@@ -29,9 +32,6 @@ func (c *MockCountdownOperations) Write(p []byte) (n int, err error) {
   c.Calls = append(c.Calls, write)
   return
 }
-
-const write = "write"
-const sleep = "sleep"
 
 type DefaultSleeper struct {}
 
