@@ -10,21 +10,27 @@ var countdownStart = 3
 var finalWord = "Go!"
 
 type Sleeper interface {
-  Sleep(duration time.Duration)
+  Sleep()
 }
 
 type MockSleeper struct {
   Calls int
 }
 
-func (s *MockSleeper) Sleep(duration time.Duration) {
+type DefaultSleeper struct {}
+
+func (s *MockSleeper) Sleep() {
   s.Calls++
+}
+
+func (s *DefaultSleeper) Sleep() {
+  time.Sleep(1 * time.Second)
 }
 
 func Countdown(out io.Writer, sleeper Sleeper) {
   for i := countdownStart; i > 0; i-- {
     fmt.Fprintln(out, i)
-    sleeper.Sleep(1 * time.Second)
+    sleeper.Sleep()
   }
   fmt.Fprintf(out, finalWord)
 }
