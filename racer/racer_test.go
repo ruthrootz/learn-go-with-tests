@@ -16,8 +16,6 @@ func TestRacer(t *testing.T) {
     w.WriteHeader(http.StatusOK)
   }))
 
-  //slowUrl := "http://www.facebook.com"
-  //fastUrl := "http://www.quii.dev"
   slowURL := slowServer.URL
   fastURL := fastServer.URL
 
