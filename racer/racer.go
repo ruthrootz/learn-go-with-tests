@@ -1,25 +1,28 @@
 package racer
 
 import (
+  "fmt"
   "time"
   "net/http"
 )
 
-func Racer(a, b string) (winner string) {
+func Racer(a, b string) (winner string, error error) {
   select {
   case <- ping(a):
-    return a
+    return a, nil
   case <- ping(b):
-    return b
+    return b, nil
+  case <- time.After(10 * time.Second):
+    return "", fmt.Errorf("timed out waiting for %s and %s", a, b)
   }
 }
 
 func ping(url string) chan struct{} {
-  chan := make(chan struct{})
+  ch := make(chan struct{})
   go func() {
     http.Get(url)
-    close(chan)
+    close(ch)
   }()
-  return chan
+  return ch
 }
 
