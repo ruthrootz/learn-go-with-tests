@@ -1,8 +1,12 @@
 package walk
 
-import ()
+import (
+  "reflect"
+)
 
 func walk(x interface{}, fn func(string)) {
-  fn("test string")
+  val := reflect.ValueOf(x)
+  field := val.Field(0)
+  fn(field.String())
 }
 
