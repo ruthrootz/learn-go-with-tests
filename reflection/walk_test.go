@@ -14,18 +14,32 @@ func TestWalk(t *testing.T) {
     {
       "struct with one string field",
       struct {
-          Name string
-          City string
+        Name string
+        City string
       }{"Chris", "London"},
       []string{"Chris", "London"},
     },
     {
       "struct with one string and one int field",
       struct {
-          Name string
-          Age int
+        Name string
+        Age int
       }{"Chris", 33},
       []string{"Chris"},
+    },
+    {
+      "nested fields",
+      struct {
+        Name string
+        Profile struct {
+          Age int
+          City string
+        }
+      }{"Chris", struct {
+        Age int
+        City string
+      }{33, "London"}},
+      []string{"Chris", "London"},
     },
   }
 
