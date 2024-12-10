@@ -2,6 +2,8 @@ package context
 
 import (
   "testing"
+  "net/http"
+  "net/http/httptest"
 )
 
 type SpyStore struct {
