@@ -9,6 +9,10 @@ type Counter struct {
   value int
 }
 
+func NewCounter() *Counter {
+  return &Counter{}
+}
+
 func (c *Counter) Inc() {
   c.m.Lock()
   defer c.m.Unlock()
